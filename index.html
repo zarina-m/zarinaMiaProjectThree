@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2021 Planner</title>
+    <link href="https://fonts.googleapis.com/css?family=Barlow:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.7/css/all.css">
+    <link rel="stylesheet" type="text/css" href="./styles/styles.css">
+</head>
+<main>
+<body>
+    <div class="wrapper">
+        <div class="calendar">
+            <div class="month">
+                <button class="cycleBackwards"><i class="fas fa-chevron-circle-left"></i></button>
+                <h1></h1>
+                <button class="cycleForwards"><i class="fas fa-chevron-circle-right"></i></button>
+            </div>
+            <div class="dayOfWeek">
+                <div>Su</div>
+                <div>Mo</div>
+                <div>Tu</div>
+                <div>We</div>
+                <div>Th</div>
+                <div>Fr</div>
+                <div>Sa</div>
+            </div>
+            <div class="gridDay">
+            </div>
+        </div>
+        <div id="agenda" class="agenda">
+            <form>
+                <label for="agendaInput">Enter an event below to add it to the calendar</label>
+                <input id="agendaInput" class="agendaInput" type="text">
+                <ul>
+
+                </ul>
+            </form>
+        </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="script.js"></script>
+</main>
+</body>
+</html>
