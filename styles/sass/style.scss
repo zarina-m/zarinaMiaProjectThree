@@ -2,13 +2,12 @@
 @import 'mixins';
 
 html {
+    @include primaryFont;
     font-size: 18px;
-    text-align: center;
-    font-family: 'Barlow', sans-serif;
 }
 
 body {
-    background-color: #b8b8d1;
+    @include backgroundColour;
 }
 
 .wrapper {
@@ -17,21 +16,22 @@ body {
 }
 
 .calendar {
+    @include foregroundColour;
     margin-top: 25%;
     padding: 15px;
     border-radius: 15px;
-    background-color: #5B5F97;
-    color: #fffffb;
 }
 
 .month {
     padding: 50px;
 }
+
 h1 {
     display: inline;
 }
+
 i {
-    color: #FFC145;
+    @include buttonColour;
 }
 
 .dayOfWeek {
@@ -50,21 +50,32 @@ i {
 
 .gridDay div:hover, 
 .gridDay div:focus-within {
-    background-color: #FFC145;
+    @include gridDayHoverFocusStyle;
+    
+}
+
+.gridDay div:hover a {
     color: #5B5F97;
-    font-weight: bold;
 }
 
 .gridDay div:empty {
-    background-color: #5B5F97;
+    @include foregroundColour;
+}
+
+.gridDay a {
+    @include primaryFont;
+    text-decoration: none;
+}
+
+.event {
+    @include dayEvent;
 }
 
 .agenda {
+    @include foregroundColour;
     display: none;
     padding: 15px;
     border-radius: 15px;
-    background-color: #5B5F97;
-    color: #fffffb;
 }
 
 .agendaInput {
@@ -79,11 +90,12 @@ label {
 }
 
 button {
+    border: none;
     background: transparent;
-    border: #5B5F97;
+    @include foregroundColour
 }
 
 button i:hover,
 button:focus i{
-    color: #ff6b6c;
+    @include buttonHoverFocusColour;
 }

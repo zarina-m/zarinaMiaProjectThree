@@ -222,9 +222,10 @@ textarea {
 }
 
 html {
-  font-size: 18px;
   text-align: center;
   font-family: 'Barlow', sans-serif;
+  color: #fffffb;
+  font-size: 18px;
 }
 
 body {
@@ -237,11 +238,10 @@ body {
 }
 
 .calendar {
+  background-color: #5B5F97;
   margin-top: 25%;
   padding: 15px;
   border-radius: 15px;
-  background-color: #5B5F97;
-  color: #fffffb;
 }
 
 .month {
@@ -279,16 +279,30 @@ i {
   font-weight: bold;
 }
 
+.gridDay div:hover a {
+  color: #5B5F97;
+}
+
 .gridDay div:empty {
   background-color: #5B5F97;
 }
 
+.gridDay a {
+  text-align: center;
+  font-family: 'Barlow', sans-serif;
+  color: #fffffb;
+  text-decoration: none;
+}
+
+.event {
+  background-color: #92374D;
+}
+
 .agenda {
+  background-color: #5B5F97;
   display: none;
   padding: 15px;
   border-radius: 15px;
-  background-color: #5B5F97;
-  color: #fffffb;
 }
 
 .agendaInput {
@@ -303,8 +317,9 @@ label {
 }
 
 button {
+  border: none;
   background: transparent;
-  border: #5B5F97;
+  background-color: #5B5F97;
 }
 
 button i:hover,

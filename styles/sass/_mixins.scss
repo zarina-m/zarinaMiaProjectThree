@@ -1,0 +1,31 @@
+@mixin primaryFont {
+    text-align: center;
+    font-family: 'Barlow', sans-serif;
+    color: #fffffb
+}
+
+@mixin backgroundColour {
+background-color: #b8b8d1;
+}
+
+@mixin foregroundColour {
+background-color: #5B5F97;
+}
+
+@mixin dayEvent {
+    background-color: #92374D;
+}
+
+@mixin buttonColour {
+    color: #FFC145;
+}
+
+@mixin buttonHoverFocusColour {
+    color: #ff6b6c;
+}
+
+@mixin gridDayHoverFocusStyle {
+    background-color: #FFC145;
+    color: #5B5F97;
+    font-weight: bold;
+}

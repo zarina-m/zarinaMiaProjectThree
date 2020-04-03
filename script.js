@@ -93,12 +93,26 @@ app.loadMonth = function(month) {
     }
     //Add correct number of days to calendar
     for (let i = 0; i < app.calendarLibrary[month]['numDays']; i++) {
-        $('.gridDay').append("<div><a href='#agenda'>" + (i+1) + "</a></div>")
+        $('.gridDay').append("<div id=" + (i+1) + "><a href='#agenda'>" + (i+1) + "</a></div>")
     }
     //Insert respective month into calendar
     $('h1').text(month + " 2020");
 
     app.currentMonth = month;
+
+    app.highlightDays()
+}
+
+app.highlightDays = function() {
+    for (let i = 0; i < app.calendarLibrary[app.currentMonth]['dailyTodo'].length; i++) {
+        let todo = app.calendarLibrary[app.currentMonth]['dailyTodo'][i];
+        console.log(todo);
+        if (todo.length !== 0) {
+            $("#" + (i + 1)).addClass('event')
+        } else {
+            $("#" + (i + 1)).removeClass('event')
+        }
+    } 
 }
 
 app.init = function() {
@@ -138,7 +152,11 @@ app.init = function() {
             app.calendarLibrary[app.currentMonth]['dailyTodo'][app.currentDay].push(listItem);
 
         }
+        
+        app.highlightDays()
     }) 
+
+
 
 
     $('.cycleBackwards').on('click', function (e){
