@@ -106,13 +106,22 @@ app.loadMonth = function(month) {
 app.highlightDays = function() {
     for (let i = 0; i < app.calendarLibrary[app.currentMonth]['dailyTodo'].length; i++) {
         let todo = app.calendarLibrary[app.currentMonth]['dailyTodo'][i];
-        console.log(todo);
         if (todo.length !== 0) {
             $("#" + (i + 1)).addClass('event')
         } else {
             $("#" + (i + 1)).removeClass('event')
         }
     } 
+}
+app.deleteItem = function (e) {
+    let todoText = e.target.parentNode.parentNode.innerText;
+    let index = app.calendarLibrary[app.currentMonth]['dailyTodo'][app.currentDay].indexOf(todoText);
+    if (index !== -1) {
+        app.calendarLibrary[app.currentMonth]['dailyTodo'][app.currentDay].splice(index, 1);
+    }
+
+    e.target.parentNode.parentNode.remove();
+    app.highlightDays()
 }
 
 app.init = function() {
@@ -134,8 +143,11 @@ app.init = function() {
         $('ul').empty()
         let listItems = app.calendarLibrary[app.currentMonth]['dailyTodo'][app.currentDay];
         for (let i = 0; i < listItems.length; i++) {
-            $('ul').append("<li><i class='fas fa-star'></i>" + listItems[i] + "<button class='deleteButton'><i class='far fa-times-circle'></i> </button> </li>");
+            $('ul').append("<li><i class='fas fa-star'></i>" + listItems[i] + "<button class='deleteItem'><i class='far fa-times-circle'></i> </button> </li>");
         }
+        // Remove deleteItem click handler and then add deleteItem click handler
+        // We do this so the event handler is only called once
+        $('.deleteItem').off('click').on('click', app.deleteItem)
     })
 
 
@@ -144,14 +156,15 @@ app.init = function() {
         let listItem = $('input').val().trim(' ');
 
         if (listItem !== '') {
-            $('ul').append("<li><i class='fas fa-star'></i>" + listItem + "<button class='deleteButton'><i class='far fa-times-circle'></i> </button> </li>");
+            $('ul').append("<li><i class='fas fa-star'></i>" + listItem + "<button class='deleteItem'><i class='far fa-times-circle'></i> </button> </li>");
             $('input').val('');
 
-            console.log(app.calendarLibrary[app.currentMonth]['dailyTodo'][app.currentDay])
-            console.log(app.currentDay)
             app.calendarLibrary[app.currentMonth]['dailyTodo'][app.currentDay].push(listItem);
-
         }
+
+        // Remove deleteItem click handler and then add deleteItem click handler
+        // We do this so the event handler is only called once
+        $('.deleteItem').off('click').on('click', app.deleteItem)
         
         app.highlightDays()
     }) 
@@ -189,6 +202,8 @@ app.init = function() {
         $('.agenda').hide()
         app.loadMonth(nextMonth)
     })
+
+    
 }
 
 $(function() {
