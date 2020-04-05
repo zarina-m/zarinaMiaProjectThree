@@ -22,6 +22,10 @@ body {
     border-radius: 15px;
 }
 
+.removeBottomBorder {
+    border-radius: 15px 15px 0px 0px;
+}
+
 .month {
     padding: 50px;
 }
@@ -75,7 +79,7 @@ i {
     @include foregroundColour;
     display: none;
     padding: 15px;
-    border-radius: 15px;
+    border-radius: 0px 0px 15px 15px;
 }
 
 .agendaInput {

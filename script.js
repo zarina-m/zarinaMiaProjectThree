@@ -137,6 +137,7 @@ app.init = function() {
 
     $('.gridDay').on('click', function(e) {
         $('.agenda').show()
+        $('.calendar').addClass('removeBottomBorder')
         app.currentDay = parseInt(e.target.innerText) - 1;
 
         //TODO: get items for this day and display
@@ -184,6 +185,7 @@ app.init = function() {
         let prevMonth = app.monthLookup[prevMonthIndex];
 
         $('.agenda').hide()
+        $('.calendar').removeClass('removeBottomBorder')
         app.loadMonth(prevMonth)
     })
 
@@ -200,6 +202,7 @@ app.init = function() {
         let nextMonth = app.monthLookup[nextMonthIndex];
 
         $('.agenda').hide()
+        $('.calendar').removeClass('removeBottomBorder')
         app.loadMonth(nextMonth)
     })
 
