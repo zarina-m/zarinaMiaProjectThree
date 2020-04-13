@@ -202,11 +202,19 @@ text-align: center;
 h1 {
 font-size: 2rem;
 }
+
+.month i,
+.month button {
+    font-size: 1rem;
+}
 }
 
 @media only screen and (max-width: 320px) {
 h1 {
     text-decoration: none;
+}
+h2 {
+    width: 25%;
 }
 h2,
 label span {

@@ -414,7 +414,7 @@ input {
     text-align: center;
   }
   h2 {
-    width: 35%;
+    width: 25%;
     font-size: 1rem;
     -webkit-transition: ease all 0.5s;
     transition: ease all 0.5s;
@@ -442,22 +442,19 @@ input {
   h1 {
     font-size: 2rem;
   }
-  .month i,
-  .month button {
-    font-size: 1rem;
-  }
 }
 
 @media only screen and (max-width: 320px) {
   h1 {
     text-decoration: none;
   }
-  h2 {
-    width: 25%;
-  }
   h2,
   label span {
     text-shadow: none;
+  }
+  .month i,
+  .month button {
+    font-size: 1rem;
   }
   h2,
   .month,
