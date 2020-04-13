@@ -1,8 +1,27 @@
 @mixin primaryFont {
-    text-align: center;
+    color: #fffffb;
     font-family: 'Barlow', sans-serif;
     font-weight: 400;
-    color: #fffffb
+    text-align: center;
+}
+
+@mixin secondaryFont {
+    font-family: 'Quicksand', sans-serif;
+    text-transform: uppercase;
+}
+
+@mixin h1Font {
+    @include secondaryFont;
+    position: relative;
+    top: 75%;
+    transform: translateY(-50%);
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1px #5B5F97;
+    text-align: left;
+    font-size: 4rem;
+    text-shadow: 3px 4px #FFF;
+    text-decoration: overline;
+    transition: ease all 1.5s;
 }
 
 @mixin backgroundColour {
@@ -28,4 +47,9 @@ background-color: #5B5F97;
 
 @mixin gridDayHoverFocusStyle {
     background-color: #FFC145;
+}
+
+@mixin uniformInputListStyle {
+    display: block;
+    width: 75%;
 }
