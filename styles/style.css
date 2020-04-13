@@ -224,6 +224,7 @@ textarea {
 html {
   text-align: center;
   font-family: 'Barlow', sans-serif;
+  font-weight: 400;
   color: #fffffb;
   font-size: 18px;
 }
@@ -238,6 +239,19 @@ header {
   text-align: center;
 }
 
+h1 {
+  font-family: 'Quicksand', sans-serif;
+  font-size: 4rem;
+  text-transform: uppercase;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 1px #5B5F97;
+  text-shadow: 3px 4px #FFF;
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
 .wrapper {
   margin: 0 auto;
   max-width: 1000px;
@@ -245,7 +259,6 @@ header {
 
 .calendar {
   background-color: #5B5F97;
-  margin-top: 25%;
   padding: 15px;
   border-radius: 15px;
 }
@@ -258,8 +271,13 @@ header {
   padding: 50px;
 }
 
-h1 {
-  display: inline;
+h2 {
+  display: inline-block;
+  width: 250px;
+  font-size: 1.5rem;
+  text-shadow: 2px 1px #b8b8d1;
+  font-family: 'Quicksand', sans-serif;
+  text-transform: uppercase;
 }
 
 button {
@@ -268,7 +286,7 @@ button {
   background-color: #5B5F97;
 }
 
-button i:hover,
+button:hover i,
 button:focus i {
   color: #ff6b6c;
 }
@@ -298,14 +316,13 @@ i {
 .gridDay div:hover,
 .gridDay div:focus-within {
   background-color: #FFC145;
-  color: #5B5F97;
-  font-weight: bold;
   cursor: pointer;
 }
 
 .gridDay div:focus-within a,
 .gridDay div:hover a {
   color: #5B5F97;
+  font-weight: bold;
 }
 
 .gridDay div:empty {
@@ -315,12 +332,13 @@ i {
 .gridDay a {
   text-align: center;
   font-family: 'Barlow', sans-serif;
+  font-weight: 400;
   color: #fffffb;
   text-decoration: none;
 }
 
 .event {
-  background-color: #92374D;
+  background-color: #ff6b6c;
   -webkit-transition: all 0.8s ease;
   transition: all 0.8s ease;
 }
@@ -335,6 +353,19 @@ i {
 label {
   display: block;
   padding: 10px;
+}
+
+label span {
+  font-size: 1rem;
+  text-shadow: 1px 1px #b8b8d1;
+  font-family: 'Quicksand', sans-serif;
+  text-transform: uppercase;
+}
+
+input {
+  padding: 5px;
+  border-radius: 10px;
+  border: transparent;
 }
 
 .agendaInput {

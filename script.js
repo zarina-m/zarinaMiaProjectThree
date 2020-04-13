@@ -96,7 +96,7 @@ app.loadMonth = function(month) {
         $('.gridDay').append(`<div id='${(i+1)}'><a href='#agenda'>${(i+1)}</a></div>`)
     }
     //Insert respective month into calendar
-    $('h1').text(`${month} 2020`);
+    $('h2').text(`${month}`);
 
     app.currentMonth = month;
 
@@ -114,13 +114,25 @@ app.highlightDays = function() {
     } 
 }
 app.deleteItem = function (e) {
-    let todoText = e.target.parentNode.parentNode.innerText;
+
+    let todoText = "";
+    if (e.target.nodeName === "I") {
+        // The user clicked the <i>
+        todoText = e.target.parentNode.parentNode.innerText;
+        e.target.parentNode.parentNode.remove();
+    } else {
+        // The user clicked the <button>
+        todoText = e.target.parentNode.innerText;
+        e.target.parentNode.remove();
+    }
+
     let index = app.calendarLibrary[app.currentMonth]['dailyTodo'][app.currentDay].indexOf(todoText);
+
     if (index !== -1) {
         app.calendarLibrary[app.currentMonth]['dailyTodo'][app.currentDay].splice(index, 1);
     }
 
-    e.target.parentNode.parentNode.remove();
+    localStorage.setItem('calendarLibrary', JSON.stringify(app.calendarLibrary));
     app.highlightDays()
 }
 
@@ -132,8 +144,13 @@ app.init = function() {
             app.calendarLibrary[month]['dailyTodo'].push([])
         }
     }
-    app.loadMonth('April');
 
+    localCalendarLibrary = localStorage.getItem('calendarLibrary');
+    if (localCalendarLibrary !== null) {
+        app.calendarLibrary = JSON.parse(localCalendarLibrary);
+    }
+
+    app.loadMonth('April');
 
     $('.gridDay').on('click', function(e) {
         $('.agenda').show()
@@ -144,13 +161,13 @@ app.init = function() {
         $('ul').empty()
         let listItems = app.calendarLibrary[app.currentMonth]['dailyTodo'][app.currentDay];
         for (let i = 0; i < listItems.length; i++) {
-            $('ul').append(`<li><i class='fas fa-star'></i> ${listItems[i]} <button class='deleteItem'><i class='far fa-times-circle'></i> </button> </li>`);
+            $('ul').append(`<li><i class='fas fa-star'></i>${listItems[i]}<button class='deleteItem'><i class='far fa-times-circle'></i> </button> </li>`);
         }
         // Remove deleteItem click handler and then add deleteItem click handler
         // We do this so the event handler is only called once
         $('.deleteItem').off('click').on('click', app.deleteItem)
         //Add date above input
-        $('label').html(`Enter an event below to add it to ${app.currentMonth} ${app.currentDay + 1}`);
+        $('label').html(`Enter an event below to add it to <span>${app.currentMonth} ${app.currentDay + 1}</span>`);
     })
 
 
@@ -159,7 +176,7 @@ app.init = function() {
         let listItem = $('input').val().trim(' ');
 
         if (listItem !== '') {
-            $('ul').append(`<li><i class='fas fa-star'></i> ${listItem } <button class='deleteItem'><i class='far fa-times-circle'></i> </button> </li>`);
+            $('ul').append(`<li><i class='fas fa-star'></i>${listItem}<button class='deleteItem'><i class='far fa-times-circle'></i> </button> </li>`);
             $('input').val('');
 
             app.calendarLibrary[app.currentMonth]['dailyTodo'][app.currentDay].push(listItem);
@@ -168,7 +185,7 @@ app.init = function() {
         // Remove deleteItem click handler and then add deleteItem click handler
         // We do this so the event handler is only called once
         $('.deleteItem').off('click').on('click', app.deleteItem)
-        
+        localStorage.setItem('calendarLibrary', JSON.stringify(app.calendarLibrary));
         app.highlightDays()
     }) 
 

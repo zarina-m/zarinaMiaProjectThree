@@ -1,6 +1,7 @@
 @mixin primaryFont {
     text-align: center;
     font-family: 'Barlow', sans-serif;
+    font-weight: 400;
     color: #fffffb
 }
 
@@ -13,7 +14,7 @@ background-color: #5B5F97;
 }
 
 @mixin dayEvent {
-    background-color: #92374D;
+    background-color: #ff6b6c;
     transition: all 0.8s ease;
 }
 
@@ -27,6 +28,4 @@ background-color: #5B5F97;
 
 @mixin gridDayHoverFocusStyle {
     background-color: #FFC145;
-    color: #5B5F97;
-    font-weight: bold;
 }
