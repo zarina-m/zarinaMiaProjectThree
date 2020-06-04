@@ -35,6 +35,7 @@ h1 {
 
 .month {
     padding: 50px;
+    display: inline-flex;
 }
 
 h2 {
@@ -106,9 +107,12 @@ i {
 
 .agenda {
     @include foregroundColour;
-    display: none;
-    padding: 30px 0px;
     border-radius: 0px 0px 15px 15px;
+    overflow: hidden;
+    padding: 30px 0px;
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.26s ease;
 }
 
 label {
@@ -158,20 +162,22 @@ input {
     opacity: 1;
 }
 
+.addVisibility {
+    transform: scaleY(1)
+}
+
 @media only screen and (max-width: 768px) {
 header {
 height: 15vh;
 }
 
 h1 {
-    top: 50%;
-    font-size: 3rem;
+    font-size: 2.5rem;
+    padding-bottom: 10px;
     text-align: center;
 }
 
 h2 {
-    width: 35%;
-    font-size: 1rem;
     transition: ease all 0.5s;
 }
 
@@ -186,10 +192,6 @@ h2 {
 
 .agenda {
     padding: 15px 0px;
-}
-
-.agenda li {
-text-align: center;
 }
 
 .agenda li .deleteItem {

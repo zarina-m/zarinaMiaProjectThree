@@ -153,10 +153,11 @@ app.init = function() {
         app.calendarLibrary = JSON.parse(localCalendarLibrary);
     }
     //Start app with April calendar
-    app.loadMonth('April');
+    app.loadMonth('June');
     //Handles clicks on days 
     $('.gridDay').on('click', function(e) {
         $('.agenda').show()
+        $('.agenda').addClass('addVisibility')
         $('.calendar').addClass('removeBottomBorder')
         app.currentDay = parseInt(e.target.innerText) - 1;
 
@@ -204,6 +205,7 @@ app.init = function() {
         let prevMonth = app.monthLookup[prevMonthIndex];
 
         $('.agenda').hide()
+        $('.agenda').removeClass('addVisibility')
         $('.calendar').removeClass('removeBottomBorder')
         app.loadMonth(prevMonth)
     })
@@ -219,8 +221,8 @@ app.init = function() {
         }
 
         let nextMonth = app.monthLookup[nextMonthIndex];
-
         $('.agenda').hide()
+        $('.agenda').removeClass('addVisibility')
         $('.calendar').removeClass('removeBottomBorder')
         app.loadMonth(nextMonth)
     })

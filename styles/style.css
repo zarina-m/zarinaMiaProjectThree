@@ -271,6 +271,9 @@ h1 {
 
 .month {
   padding: 50px;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
 }
 
 h2 {
@@ -348,9 +351,17 @@ i {
 
 .agenda {
   background-color: #5B5F97;
-  display: none;
-  padding: 30px 0px;
   border-radius: 0px 0px 15px 15px;
+  overflow: hidden;
+  padding: 30px 0px;
+  -webkit-transform: scaleY(0);
+          transform: scaleY(0);
+  -webkit-transform-origin: top;
+          transform-origin: top;
+  -webkit-transition: -webkit-transform 0.26s ease;
+  transition: -webkit-transform 0.26s ease;
+  transition: transform 0.26s ease;
+  transition: transform 0.26s ease, -webkit-transform 0.26s ease;
 }
 
 label {
@@ -404,18 +415,21 @@ input {
   opacity: 1;
 }
 
+.addVisibility {
+  -webkit-transform: scaleY(1);
+          transform: scaleY(1);
+}
+
 @media only screen and (max-width: 768px) {
   header {
     height: 15vh;
   }
   h1 {
-    top: 50%;
-    font-size: 3rem;
+    font-size: 2.5rem;
+    padding-bottom: 10px;
     text-align: center;
   }
   h2 {
-    width: 35%;
-    font-size: 1rem;
     -webkit-transition: ease all 0.5s;
     transition: ease all 0.5s;
   }
@@ -428,9 +442,6 @@ input {
   }
   .agenda {
     padding: 15px 0px;
-  }
-  .agenda li {
-    text-align: center;
   }
   .agenda li .deleteItem {
     font-size: 1rem;
